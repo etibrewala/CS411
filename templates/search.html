@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Page</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='schubert.css') }}">
+    <style>
+        .typewriter h2 {
+            visibility: hidden;
+            font-size: 1em;
+            color: red;
+            margin: 0 auto 20px; /* Adjusted bottom margin */
+            white-space: nowrap;
+            overflow: hidden;
+            display: inline-block;
+            animation: typing 3s steps(40, end) forwards, blink-caret 0.75s step-end infinite;
+        }
+
+        @keyframes typing {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+
+        @keyframes blink-caret {
+            from, to { border-color: transparent; }
+            50% { border-color: black; }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">Kunjesh MD</div>
+            <div class="nav-items">
+                <div class="nav-link"><a href="/welcome">Home</a></div>
+                <div class="nav-link"><a href="/search">Pharmacies</a></div>
+                <div class="nav-link"><a href="/settings">Settings</a></div>
+                <div class="nav-link">
+                    <form action="{{ url_for('logout') }}" method="post">
+                        <button type="submit">Sign Out</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </nav>
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <div class="flash-messages">
+                {% for message in messages %}
+                    <div class="alert">{{ message }}</div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    {% endwith %}
+    <div class="container">
+        <h1>Pharmacy Search</h1>
+        <div class="typewriter">
+            {% if error %}
+            <h2 id="error-message">{{ error }}</h2>
+            {% endif %}
+        </div>
+        <form action="{{ url_for('search') }}" method="POST">
+            <!-- <label for="search">Enter a City or Zip Code:</label><br> -->
+            <input type="text" id="search" name="search" placeholder="Enter a City or Zip Code"><br>
+            <br>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+    <div class="container search-box">
+        <h1>Update Home Pharmacy</h1>  
+        <form action="{{ url_for('update_home_pharmacy') }}" method="POST">
+            <!-- <label for="search">Enter a City or Zip Code:</label><br> -->
+            <input type="text" id="hp_id" name="hp_id" placeholder="New Pharmacy ID"><br>
+            <br>
+            <button type="submit">Update</button>
+        </form>
+    </div>
+    <div class="container">
+        <h1>Most Popular Pharmacies</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Pharmacy ID</th>
+                    <th>Pharmacy Name</th>
+                    <th>Pharmacy Address</th>
+                    <th>Number of Users</th>
+                </tr>
+            </thead>
+            <tbody id="pharms">
+                {% for pharmacy in popular_pharmacies %}
+                    <tr>
+                    {% for item in pharmacy %}
+                        <td>{{ item }}</td>
+                    {% endfor %}
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var errorMessage = document.getElementById('error-message');
+            if (errorMessage && errorMessage.textContent.trim() !== '') {
+                errorMessage.style.visibility = 'visible';
+                setTimeout(function() {
+                    errorMessage.style.display = 'none';
+                }, 5000); // 3s for typing effect + 2s wait
+            }
+        });
+    </script>
+</body>
+</html>

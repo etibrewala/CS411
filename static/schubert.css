@@ -1,0 +1,243 @@
+@import url('https://fonts.googleapis.com/css2?family=Red+Hat+Text:wght@400;700&display=swap');
+
+/* Resets */
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    /* font-family: 'Red Hat Text', sans-serif; */
+    font-family: 'Courier New', Courier, monospace;
+    box-sizing: border-box;
+}
+
+/* Full-screen centering */
+body {
+    overflow-y: auto; /* Enable vertical scrolling */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* Align to the top */
+    align-items: center;
+    background-image: url('/static/purple.jpg'); /* Path to your background image */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    text-align: center;
+    background-attachment: fixed; /* Keep the background fixed */
+
+}
+
+/* Input and Label Styling */
+input[type="text"], input[type="password"] {
+    width: calc(100% - 20px); /* Full width minus padding */
+    padding: 10px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+}
+
+label {
+    margin-top: 10px;
+    display: block; /* Ensure the label is on a new line */
+    text-align: left; /* Align text to the left */
+    font-size: 0.9em;
+    color: #333;
+}
+
+/* Styling for buttons */
+button {
+    background-color: #4CAF50; /* Green background */
+    color: white;
+    padding: 10px 20px;
+    margin: 20px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%; /* Make the button full-width */
+    margin-top: 5px;
+    border-radius: 4px;
+    font-family: 'Courier New', Courier, monospace;
+
+}
+
+button:hover {
+    background-color: #45a049; /* Darker green on hover */
+}
+
+/* Smaller button specific styling */
+.button.small {
+    padding: 5px 10px; /* Smaller padding */
+    font-size: 0.8em; /* Smaller font size */
+    width: auto; /* Auto width based on content, not full-width */
+    display: inline-block; /* Allow elements to sit side by side */
+}
+
+.btn-secondary {
+    background-color: #6c757d; /* Gray background */
+    color: white;
+    text-decoration: none;
+    padding: 10px 15px;
+    border-radius: 4px;
+    display: inline-block;
+    margin-left: 10px; /* Space from the Login button */
+}
+
+.btn-secondary:hover {
+    background-color: #5a6268; /* Darker gray on hover */
+}
+
+/* Navigation Bar Styling */
+.navbar {
+    background-color: #1c0b24; /* Blue background */
+    color: white;
+    width: 100%; /* Full width */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    position: fixed; /* Fixed at the top of the viewport */
+    top: 0;
+    left: 0;
+    height:auto;
+    z-index: 1000; /* Ensures it stays on top of other content */
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between; /* Space items out between left and right */
+    align-items: center; /* Vertically align items in the center */
+    max-width: 1200px; /* Maximum width of the content within the navbar */
+    margin: 0 auto; /* Centering the navbar content horizontally */
+}
+
+.nav-brand {
+    font-size: 1.5em; /* Larger text for branding */
+    font-weight: bold;
+}
+
+.nav-items {
+    display: flex;
+    align-items: center;
+}
+
+.nav-link, .search-box, form {
+    margin-left: 10px; /* Space between navigation items */
+}
+
+.search-box {
+    padding: 8px;
+    border: none;
+    border-radius: 4px;
+    outline: none;
+}
+
+.nav-link a, .nav-link button {
+    background: none;
+    border: none;
+    color: white;
+    text-decoration: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    align-items: center;
+}
+
+.nav-link button:hover, .nav-link a:hover {
+    background-color: rgba(255, 255, 255, 0.2); /* Subtle hover effect */
+}
+
+/* Main container */
+.container {
+    margin-top: 12vh;
+    margin-bottom: 5vh;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 30px;
+    width: auto;
+    max-width: 800px;
+    text-align: center;
+    box-shadow: 0px 0px 20px 10px rgb(0, 0, 0);
+}
+
+/* Table Styles */
+table {
+    width: 100%; /* Make table width 100% of its parent container */
+    max-width: 100%; /* Ensure it doesn't exceed the parent container */
+    border-collapse: collapse;
+    table-layout: fixed; /* Fix the layout to match the width of the parent */
+    margin-top: 20px; /* Space from the content above */
+}
+
+th, td {
+    border: 1px solid #ddd;
+    text-align: left;
+    padding: 8px;
+    overflow: hidden; /* Hide text overflow */
+    text-overflow: ellipsis; /* Add ellipsis to overflowing content */
+    white-space: nowrap; /* Keep the content on a single line */
+}
+
+th {
+    background-color: #f2f2f2;
+    color: #333;
+}
+
+tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+@media screen and (max-width: 600px) {
+    .navbar {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .nav-container {
+        width: 100%;
+    }
+
+    .nav-items input[type="text"], 
+    .nav-items .nav-link, 
+    .nav-items form {
+        margin-top: 10px; /* Add some space between items on smaller screens */
+    }
+
+
+    table {
+        display: block; /* Enable scrolling on smaller screens */
+        overflow-x: auto;
+    }
+}
+
+
+/* Flash Messages Styles */
+.flash-messages {
+    width: 90%;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 10px;
+}
+
+.alert {
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    color: #333;
+    background-color: #e2e3e5;
+    border-color: #d6d8db;
+}
+
+.search-box {
+    background-color: rgb(255, 255, 255);
+    border: 1px solid #ddd;
+    padding: 25px;
+    margin-top: 15px;
+    width: 250px;
+    height: 250px
+  }  
+
+  .pharm {
+    background-color: rgb(255, 255, 255);
+    border: 1px solid #ddd;
+    padding: 25px;
+    margin-top: 20px;
+    width: 1500px
+  }  

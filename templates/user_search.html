@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en">
+    <html>
+        <body>
+            <h1>Input User First Name:</h1>
+        </body>
+        <form action="{{ url_for("user_search")}}" method="post">
+            <label for="firstname">First Name:</label>
+            <input type="text" id="firstname" name="name" placeholder="firstname">
+            <button type="submit">Login</button>
+        </form>
+    </html>
+</html>

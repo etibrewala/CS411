@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='schubert.css') }}">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">Kunjesh MD</div>
+            <div class="nav-items">
+                <div class="nav-link"><a href="/welcome">Home</a></div>
+                <div class="nav-link"><a href="/search">Pharmacies</a></div>
+                <div class="nav-link"><a href="/settings">Settings</a></div>
+                <div class="nav-link">
+                    <form action="{{ url_for('logout') }}" method="post">
+                        <button type="submit">Sign Out</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var searchButton = document.getElementById('search-button');
+            searchButton.addEventListener('click', function() {
+                // Redirect to the search page
+                window.location.href = "/search"; // Change "/search" to the desired URL
+            });
+        });
+    </script>
+    <!-- Main Content -->
+    <div class="container">
+        <h2>Your Information</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>User_ID</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Email</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{{ user_info[0] }}</td>
+                    <td>{{ user_info[1] }}</td>
+                    <td>{{ user_info[2] }}</td>
+                    <td>{{ user_info[3] }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="container pharm">
+        <h2>Home Pharmacy Info</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Pharmacy ID</th>
+                    <th>Pharmacy Name</th>
+                    <th>Phone Number</th>
+                    <th>Address</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{{ pharmacy_info[0] }}</td>
+                    <td>{{ pharmacy_info[1] }}</td>
+                    <td>{{ pharmacy_info[2] }}</td>
+                    <td>{{ pharmacy_info[3] }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>

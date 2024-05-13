@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Landing Page</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='landing.css') }}">
+</head>
+<body>
+
+<div class="container">
+    <h1 class = "glow">Welcome to Kunjesh Pharmacy</h1>
+    <a href="{{ url_for('login') }}" class="sign-in-button">Sign In</a>  </div>
+  <div class="blank"></div>
+  
+  <div class="container second">
+    <div class="item">
+      <div class="img img-first"></div>
+      <div class="card">
+        <h3>Services</h3>
+        <p>We provide convenient access to nearby pharmacies and deliver accurate information on all prescribed medications. Ensuring seamless coordination between your treatment plan and pharmaceutical needs, we prioritize your safety and satisfaction</p>
+      </div>
+    </div>
+    <div class="item">
+      <div class="img img-second"></div>
+      <div class="card">
+        <h3>Our Company</h3>
+        <p>At KunjeshDB, we are driven by a mission to deliver exceptional medical services tailored to meet the unique needs of our patients. With a focus on innovation, integrity, and patient-centered care, we strive to be a trusted partner in your health and wellness.</p>
+      </div>
+    </div>
+    <div class="item">
+      <div class="img img-third"></div>
+      <div class="card">
+        <h3>Our team</h3>
+        <p>Our dedicated team of experienced medical professionals is committed to providing compassionate care and expert guidance to support your health journey. With a diverse range of specialties and a shared passion for improving lives, we are here to serve you with excellence.</p>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

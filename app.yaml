@@ -1,0 +1,8 @@
+#app.yaml
+runtime: python37
+
+env_variables:
+  CLOUD_SQL_USERNAME: eshaant2
+  CLOUD_SQL_PASSWORD: C1rcusMax1mus
+  CLOUD_SQL_DATABASE_NAME: Drugs
+  CLOUD_SQL_CONNECTION_NAME: kunjeshdb:us-central1:kunjesh-sql

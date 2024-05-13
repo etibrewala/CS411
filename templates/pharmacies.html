@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Result</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='schubert.css') }}">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">Kunjesh MD</div>
+            <div class="nav-items">
+                <div class="nav-link"><a href="/welcome">Home</a></div>
+                <div class="nav-link"><a href="/search">Pharmacies</a></div>
+                <div class="nav-link"><a href="/settings">Settings</a></div>
+                <div class="nav-link">
+                    <form action="{{ url_for('logout') }}" method="post">
+                        <button type="submit">Sign Out</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+        <h1>Search Results:</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Pharmacy ID</th>
+                    <th>Pharmacy Name</th>
+                    <th>Phone Number</th>
+                    <th>Address</th>
+                </tr>
+            </thead>
+            <tbody id="pharms">
+                {% for pharmacy in pharmacies %}
+                    <tr>
+                    {% for item in pharmacy %}
+                        <td>{{ item }}</td>
+                    {% endfor %}
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

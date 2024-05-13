@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Settings</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='schubert.css') }}">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">Kunjesh MD</div>
+            <div class="nav-items">
+                <div class="nav-link"><a href="/welcome">Home</a></div>
+                <div class="nav-link"><a href="/search">Pharmacies</a></div>
+                <div class="nav-link"><a href="/settings">Settings</a></div>
+                <div class="nav-link">
+                    <form action="{{ url_for('logout') }}" method="post">
+                        <button type="submit">Sign Out</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <div class="flash-messages">
+                {% for message in messages %}
+                    <div class="alert">{{ message }}</div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    {% endwith %}
+
+    <!-- User Settings Form -->
+    <div class="container">
+        <h1>Update User Info:</h1>
+        <form action="{{ url_for('update_user') }}" method="post">
+            <label for="usr_id">User ID:</label>
+            <input type="text" id="usr_id" name="usr_id" value={{user_info[0]}} readonly>
+
+            <label for="email">Email:</label>
+            <input type="text" id="email" name="email" value={{user_info[3]}} required>
+            
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" value={{user_info[4]}} required>
+
+            <label for="fname">First Name:</label>
+            <input type="text" id="fname" name="fname" value={{user_info[1]}} required>
+
+            <label for="lname">Last Name:</label>
+            <input type="text" id="lname" name="lname" value={{user_info[2]}} required>
+
+            <label for="hp_id">Home Pharmacy ID:</label>
+            <input type="text" id="hp_id" name="hp_id" value={{user_info[5]}} readonly>
+
+            <button type="submit">Update</button>
+        </form>
+        <form action="{{ url_for('delete') }}" method="post">
+            <button type="submit" style="background-color: red; color: white;">Delete User</button>
+        </form>
+    </div>
+</body>
+</html>

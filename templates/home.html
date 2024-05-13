@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='schubert.css') }}">
+    <style>
+        .typewriter h2 {
+            visibility: hidden;
+            font-size: 1em;
+            color: red;
+            margin: 0 auto 20px; /* Adjusted bottom margin */
+            white-space: nowrap;
+            overflow: hidden;
+            display: inline-block;
+            animation: typing 3s steps(40, end) forwards, blink-caret 0.75s step-end infinite;
+        }
+
+        @keyframes typing {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+
+        @keyframes blink-caret {
+            from, to { border-color: transparent; }
+            50% { border-color: black; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Sign into KunjeshDB</h1>
+        <div class="typewriter">
+            {% if error %}
+            <h2 id="error-message">{{ error }}</h2>
+            {% endif %}
+        </div>
+        <form action="{{ url_for('login') }}" method="POST">
+            <label for="email">Email:</label>
+            <input type="text" id="email" name="email" required>
+            <br>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+            <br>
+            <button type="submit">Login</button>
+            <a href="{{ url_for('new_user') }}" class="btn btn-secondary">Sign Up</a>
+            <a href="/" class="btn btn-secondary">Return</a>
+
+        </form>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var errorMessage = document.getElementById('error-message');
+            if (errorMessage && errorMessage.textContent.trim() !== '') {
+                errorMessage.style.visibility = 'visible';
+                setTimeout(function() {
+                    errorMessage.style.display = 'none';
+                }, 5000); // 3s for typing effect + 2s wait
+            }
+        });
+    </script>
+</body>
+</html>
